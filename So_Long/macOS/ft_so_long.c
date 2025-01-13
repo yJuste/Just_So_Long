@@ -41,7 +41,7 @@ void	ft_error(t_so_long *so_long, int error)
 void	ft_init(t_so_long **so_long)
 {
 	*so_long = ft_calloc(1, sizeof(t_so_long));
-	(*so_long)->img  = ft_calloc(1, sizeof(t_img));
+	(*so_long)->img = ft_calloc(1, sizeof(t_img));
 }
 
 // Fonction qui free.

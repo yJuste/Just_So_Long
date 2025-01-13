@@ -40,17 +40,28 @@
 
 // Structures
 
+typedef struct s_so_long	t_so_long;
+typedef struct s_img		t_img;
+
 typedef struct s_so_long
 {
 	void		*mlx;
 	void		*win;
+	t_img		*img;
 }	t_so_long;
+
+typedef struct s_img
+{
+	void		*ptr;
+}	t_img;
 
 //	---------- MY CODE ----------
 
 // ft_so_long.c
 
+void		ft_error(t_so_long *so_long, int error);
 void		ft_init(t_so_long **so_long);
+void		ft_free_so_long(t_so_long *so_long);
 
 // ft_lib.c
 
