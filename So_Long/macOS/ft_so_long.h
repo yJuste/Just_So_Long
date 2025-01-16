@@ -49,18 +49,36 @@
 
 typedef struct s_so_long	t_so_long;
 typedef struct s_img		t_img;
+typedef struct s_map		t_map;
+typedef struct s_point		t_point;
 
 typedef struct s_so_long
 {
 	void		*mlx;
 	void		*win;
+	void		*textures[5];
 	t_img		*img;
+	t_map		*map;
+	t_point		*p;
 }	t_so_long;
 
 typedef struct s_img
 {
 	void		*ptr;
 }	t_img;
+
+typedef struct s_map
+{
+	char		**map;
+	int			width;
+	int			height;
+}	t_map;
+
+typedef struct s_point
+{
+	int		x;
+	int		y;
+}	t_point;
 
 //	---------- MY CODE ----------
 
@@ -70,10 +88,26 @@ void		ft_error(t_so_long *so_long, int error);
 void		ft_init(t_so_long **so_long);
 void		ft_free_so_long(t_so_long *so_long);
 
+// ft_so_long_next.c
+
+void		ft_parse_map(t_so_long *so_long, char **argv);
+int			ft_parse_map_next(t_so_long *so_long, t_map *map,
+				int fd, char *line);
+
 // ft_lib.c
 
 void		*ft_calloc(size_t count, size_t size);
-int			ft_is_separator(char c, const char *sep);
+void		*ft_realloc(void *ptr, size_t old, size_t size);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
+char		*ft_strchr(const char *s, int c, char flg);
+int			ft_strcmp(const char *s1, const char *s2);
+
+// ft_lib_2.c
+
+void		flood_fill(char **tab, t_point size, t_point begin);
+void		fill(char **tab, t_point size, t_point cur, char to_fill);
+void		ft_free_strs(t_map *map, void **strs, char flg);
+int			ft_is_separator(int c, const char *sep);
 
 // ft_split.c
 

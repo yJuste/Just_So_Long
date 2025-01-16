@@ -15,7 +15,10 @@
 
 // ---------------------------PROTOTYPE---------------------------
 void		*ft_calloc(size_t count, size_t size);
-int			ft_is_separator(char c, const char *sep);
+void		*ft_realloc(void *ptr, size_t old, size_t size);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
+char		*ft_strchr(const char *s, int c, char flg);
+int			ft_strcmp(const char *s1, const char *s2);
 // ---------------------------------------------------------------
 
 void	*ft_calloc(size_t count, size_t size)
@@ -37,13 +40,73 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
-int	ft_is_separator(char c, const char *sep)
+void	*ft_realloc(void *ptr, size_t old, size_t size)
 {
-	while (*sep)
+	void		*nptr;
+
+	if (!ptr)
+		return (ft_calloc(1, size));
+	if (!size)
+		return (free(ptr), NULL);
+	nptr = ft_calloc(1, size);
+	if (!nptr)
+		return (NULL);
+	if (old < size)
+		ft_memcpy(nptr, ptr, old);
+	else
+		ft_memcpy(nptr, ptr, size);
+	free(ptr);
+	return (nptr);
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t		i;
+
+	i = 0;
+	if (!dst && !src)
+		return (NULL);
+	while (i < n)
 	{
-		if (c == *sep)
-			return (1);
-		sep++;
+		((unsigned char *)dst)[i] = ((const unsigned char *)src)[i];
+		i++;
 	}
-	return (0);
+	return (dst);
+}
+
+char	*ft_strchr(const char *s, int c, char flg)
+{
+	size_t		i;
+
+	i = 0;
+	if (flg == 'r')
+	{
+		i = ft_strlen(s);
+		while (s[i] != (char)c && i > 0)
+			i--;
+		if (s[i] == (char) c)
+			return ((char *)s + i);
+	}
+	else
+	{
+		while (s[i])
+		{
+			if (s[i] == (char)c)
+				return ((char *)(s + i));
+			i++;
+		}
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+	}
+	return (NULL);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t		i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] && s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

@@ -74,6 +74,6 @@
 
 // For SPLIT.
 
-# define SEP			" \n\t"
+# define SEP			"\n"
 
 #endif

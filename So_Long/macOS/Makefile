@@ -1,7 +1,7 @@
 NAME = so_long
 
 CC = cc
-CFLAGS = -g
+CFLAGS = -g # -fsanitize=address
 
 MINILIBX = libmlx.a
 PATH_MINILIBX = minilibx_macos
@@ -12,7 +12,10 @@ PRINTF = libftprintf.a
 PATH_PRINTF = Printf_fd
 
 SRC =	ft_so_long.c				\
+	ft_so_long_next.c			\
+	ft_parse_map.c				\
 	ft_lib.c				\
+	ft_lib_2.c				\
 	ft_split.c				\
 	Get_Next_Line/get_next_line.c
 
