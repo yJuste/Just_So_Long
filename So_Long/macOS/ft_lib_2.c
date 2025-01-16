@@ -39,7 +39,7 @@ void	fill(char **tab, t_point size, t_point cur, char to_fill)
 
 void	ft_free_strs(t_map *map, void **strs, char flg)
 {
-	int		i;
+	size_t		i;
 
 	i = 0;
 	if (!strs)

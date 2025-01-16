@@ -38,32 +38,12 @@ void	ft_parse_map(t_so_long *so_long, char **argv)
 			return (ft_error(so_long, EBADF));
 	}
 	line = get_next_line(fd);
-	so_long->map->height
-		= ft_parse_map_next(so_long, so_long->map, fd, line);
+	if (!line)
+		return (ft_error(so_long, 251));
+	so_long->map->height = ft_parse_map_next(so_long, so_long->map, fd, line);
 	close(fd);
-}
-
-/*
-
-		while (out[i])
-		{
-			if (ft_is_separator(out[0][i], "01CEP"))
-				return (ft_error(so_long, 2));
-		}
-
-*/
-
-void	ft_print_strs(char **strs)
-{
-	size_t		i;
-
-	i = 0;
-	while (strs[i])
-	{
-		ft_printf(1, "%s\n", strs[i]);
-		i++;
-	}
-	return ;
+	if (so_long->map->map)
+		ft_check(so_long, so_long->map);
 }
 
 int	ft_parse_map_next(t_so_long *so_long, t_map *map, int fd, char *line)
@@ -73,28 +53,22 @@ int	ft_parse_map_next(t_so_long *so_long, t_map *map, int fd, char *line)
 	j = 0;
 	while (line)
 	{
-		if (!line)
-			break ;
 		j++;
 		map->map = ft_realloc(map->map, sizeof(char *) * (j - 1),
 				sizeof(char *) * j);
-		map->width = ft_strlen((const char *)line) - 1;
+		map->width = ft_strlen((const char *)line);
+		if (line[map->width - 1] == '\n')
+			map->width -= 1;
 		map->map[j - 1] = ft_calloc(map->width + 1, sizeof(char));
 		ft_strncpy(map->map[j - 1], line, map->width);
 		ft_printf(1, "%s\n", map->map[j - 1]);
 		free(line);
 		line = get_next_line(fd);
 	}
-	// ft_print_strs(map->map);
+	j++;
+	map->map = ft_realloc(map->map, sizeof(char *) * (j - 1),
+			sizeof(char *) * j);
+	map->map[j - 1] = NULL;
+	j -= 1;
 	return (j);
-}
-
-void	ft_parse_map_next_next(t_map *map, char **out, size_t j)
-{
-	size_t		i;
-	char		*strchr;
-
-	i = 0;
-	strchr = NULL;
-	return ;
 }

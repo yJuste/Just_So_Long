@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 	{
 		ft_init(&so_long);
 		ft_parse_map(so_long, argv);
-		ft_free_strs(so_long->map, (void *)so_long->map->map, 'i');
 		ft_free_so_long(so_long);
 	}
 	else
@@ -45,6 +44,16 @@ void	ft_error(t_so_long *so_long, int error)
 		ft_printf(2, "Error\nFormat should be .ber.\n");
 	else if (error == 253)
 		ft_printf(2, "Error\nInvalid character.\n");
+	else if (error == 252)
+		ft_printf(2, "Error\nMisaligned lines.\n");
+	else if (error == 251)
+		ft_printf(2, "Error\nThis is an empty file.\n");
+	else if (error == 250)
+		ft_printf(2, "Error\nEmpty line.\n");
+	else if (error == 249)
+		ft_printf(2, "Error\nInvalid character.\n");
+	else if (error == 248)
+		ft_printf(2, "Error\nInvalid number of characters.\n");
 	else
 		ft_printf(2, "Error\n%s\n", strerror(error));
 	exit(error);
@@ -63,6 +72,8 @@ void	ft_init(t_so_long **so_long)
 // Fonction qui free.
 void	ft_free_so_long(t_so_long *so_long)
 {
+	if (so_long->map->map)
+		ft_free_strs(so_long->map, (void *)so_long->map->map, 'c');
 	if (so_long->img->ptr)
 		mlx_destroy_image(so_long->mlx, so_long->img->ptr);
 	if (so_long->win)

@@ -88,11 +88,18 @@ void		ft_error(t_so_long *so_long, int error);
 void		ft_init(t_so_long **so_long);
 void		ft_free_so_long(t_so_long *so_long);
 
-// ft_so_long_next.c
+// ft_parse_map.c
 
 void		ft_parse_map(t_so_long *so_long, char **argv);
 int			ft_parse_map_next(t_so_long *so_long, t_map *map,
 				int fd, char *line);
+
+// ft_check.c
+
+void		ft_check(t_so_long *so_long, t_map *map);
+void		ft_check_2(t_so_long *so_long, t_map *map);
+void		ft_check_3(t_so_long *so_long, int exit, int perso, int collec);
+void		ft_check_4(t_so_long *so_long, t_map *map);
 
 // ft_lib.c
 
