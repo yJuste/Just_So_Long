@@ -13,15 +13,18 @@
 /* ************************************************************************** */
 #include "ft_so_long.h"
 
-// -------------------------------PROTOTYPE-------------------------------
+// ----------------------------------PROTOTYPE----------------------------------
 void		flood_fill(char **tab, t_point size, t_point begin,
 				const char *to_fill);
 void		fill(char **tab, t_point size, t_point cur, const char *to_fill);
 void		ft_free_strs(t_map *map, void **strs, char flg);
 char		**ft_strsdup(const char **src);
 int			ft_is_separator(int c, const char *sep);
-// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
+// Fonction qui remplit une zone en fonction de caractères donnés.
+// size est la taille de x,y (comme un `strlen`);
+// begin est l'`index` du début de propagation;
 void	flood_fill(char **tab, t_point size, t_point begin, const char *to_fill)
 {
 	fill(tab, size, begin, to_fill);

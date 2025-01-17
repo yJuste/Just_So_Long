@@ -74,6 +74,7 @@ typedef struct s_map
 	int			height;
 }	t_map;
 
+// pour le flood_fill
 typedef struct s_point
 {
 	int		x;

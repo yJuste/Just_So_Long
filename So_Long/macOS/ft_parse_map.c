@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 #include "ft_so_long.h"
 
-// ---------------------PROTOTYPE-----------------------
+// -----------------------------PROTOTYPE--------------------------------
 void		ft_parse_map(t_so_long *so_long, char **argv);
 int			ft_parse_map_next(t_so_long *so_long, t_map *map,
 				int fd, char *line);
 void		ft_check(t_so_long *so_long, t_map *map);
-// -----------------------------------------------------
+// ----------------------------------------------------------------------
 
+// Fonction qui gère l'ouverture de fichier.
 void	ft_parse_map(t_so_long *so_long, char **argv)
 {
 	int			fd;
@@ -47,6 +48,7 @@ void	ft_parse_map(t_so_long *so_long, char **argv)
 		ft_check(so_long, so_long->map);
 }
 
+// Fonction qui transforme la map en tableau de chaines.
 int	ft_parse_map_next(t_so_long *so_long, t_map *map, int fd, char *line)
 {
 	size_t		j;
@@ -75,6 +77,7 @@ int	ft_parse_map_next(t_so_long *so_long, t_map *map, int fd, char *line)
 	return (j);
 }
 
+// Fonction principale qui appelle les fonctions de parsing.
 void	ft_check(t_so_long *so_long, t_map *map)
 {
 	ft_check_2(so_long, map);

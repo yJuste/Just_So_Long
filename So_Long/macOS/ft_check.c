@@ -11,14 +11,15 @@
 /* ************************************************************************** */
 #include "ft_so_long.h"
 
-// ---------------------PROTOTYPE-----------------------
+// ---------------------------------PROTOTYPE-----------------------------------
 void		ft_check_2(t_so_long *so_long, t_map *map);
 void		ft_check_3(t_so_long *so_long, int exit, int perso, int collec);
 void		ft_check_4(t_so_long *so_long, t_map *map);
 void		ft_check_5(t_so_long *so_long, t_map *map);
 void		ft_check_6(t_so_long *so_long, t_map *map);
-// -----------------------------------------------------
+// -----------------------------------------------------------------------------
 
+// Fonction qui gère les lignes et les caractères invalides.
 void	ft_check_2(t_so_long *so_long, t_map *map)
 {
 	size_t		i;
@@ -48,6 +49,7 @@ void	ft_check_2(t_so_long *so_long, t_map *map)
 	}
 }
 
+// Fonction qui gère le nombre de caractères minimum.
 void	ft_check_3(t_so_long *so_long, int exit, int perso, int collec)
 {
 	int			i;
@@ -77,6 +79,7 @@ void	ft_check_3(t_so_long *so_long, int exit, int perso, int collec)
 		return (ft_error(so_long, 248));
 }
 
+// Fonction qui gère que la map soit encadré par des murs.
 void	ft_check_4(t_so_long *so_long, t_map *map)
 {
 	size_t		j;
@@ -99,6 +102,7 @@ void	ft_check_4(t_so_long *so_long, t_map *map)
 			return (ft_error(so_long, 247));
 }
 
+// Fonction qui analyse si le joueur peut récupérer tous les collectibles.
 void	ft_check_5(t_so_long *so_long, t_map *map)
 {
 	char		**out;
@@ -126,6 +130,7 @@ void	ft_check_5(t_so_long *so_long, t_map *map)
 	ft_free_strs(map, (void **)out, 'c');
 }
 
+// Fonction qui analyse si le joueur peut aussi sortir.
 void	ft_check_6(t_so_long *so_long, t_map *map)
 {
 	char		**out;
@@ -139,7 +144,7 @@ void	ft_check_6(t_so_long *so_long, t_map *map)
 	begin.x = so_long->p->x;
 	begin.y = so_long->p->y;
 	out = ft_strsdup((const char **)map->map);
-	flood_fill(out, size, begin, "0CPE");
+	flood_fill(out, size, begin, "0CEP");
 	i = 0;
 	while (out[i])
 	{
