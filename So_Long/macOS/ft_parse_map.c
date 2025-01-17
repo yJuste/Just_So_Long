@@ -15,6 +15,7 @@
 void		ft_parse_map(t_so_long *so_long, char **argv);
 int			ft_parse_map_next(t_so_long *so_long, t_map *map,
 				int fd, char *line);
+void		ft_check(t_so_long *so_long, t_map *map);
 // -----------------------------------------------------
 
 void	ft_parse_map(t_so_long *so_long, char **argv)
@@ -65,10 +66,20 @@ int	ft_parse_map_next(t_so_long *so_long, t_map *map, int fd, char *line)
 		free(line);
 		line = get_next_line(fd);
 	}
+	ft_printf(1, "\n");
 	j++;
 	map->map = ft_realloc(map->map, sizeof(char *) * (j - 1),
 			sizeof(char *) * j);
 	map->map[j - 1] = NULL;
 	j -= 1;
 	return (j);
+}
+
+void	ft_check(t_so_long *so_long, t_map *map)
+{
+	ft_check_2(so_long, map);
+	ft_check_3(so_long, 0, 0, 0);
+	ft_check_4(so_long, map);
+	ft_check_5(so_long, map);
+	ft_check_6(so_long, map);
 }

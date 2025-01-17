@@ -93,13 +93,15 @@ void		ft_free_so_long(t_so_long *so_long);
 void		ft_parse_map(t_so_long *so_long, char **argv);
 int			ft_parse_map_next(t_so_long *so_long, t_map *map,
 				int fd, char *line);
+void		ft_check(t_so_long *so_long, t_map *map);
 
 // ft_check.c
 
-void		ft_check(t_so_long *so_long, t_map *map);
 void		ft_check_2(t_so_long *so_long, t_map *map);
 void		ft_check_3(t_so_long *so_long, int exit, int perso, int collec);
 void		ft_check_4(t_so_long *so_long, t_map *map);
+void		ft_check_5(t_so_long *so_long, t_map *map);
+void		ft_check_6(t_so_long *so_long, t_map *map);
 
 // ft_lib.c
 
@@ -111,9 +113,11 @@ int			ft_strcmp(const char *s1, const char *s2);
 
 // ft_lib_2.c
 
-void		flood_fill(char **tab, t_point size, t_point begin);
-void		fill(char **tab, t_point size, t_point cur, char to_fill);
+void		flood_fill(char **tab, t_point size, t_point begin,
+				const char *to_fill);
+void		fill(char **tab, t_point size, t_point cur, const char *to_fill);
 void		ft_free_strs(t_map *map, void **strs, char flg);
+char		**ft_strsdup(const char **src);
 int			ft_is_separator(int c, const char *sep);
 
 // ft_split.c

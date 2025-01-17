@@ -54,6 +54,10 @@ void	ft_error(t_so_long *so_long, int error)
 		ft_printf(2, "Error\nInvalid character.\n");
 	else if (error == 248)
 		ft_printf(2, "Error\nInvalid number of characters.\n");
+	else if (error == 247)
+		ft_printf(2, "Error\nThe map must be framed by walls.\n");
+	else if (error == 246)
+		ft_printf(2, "Error\nThe level is unsolvable.\n");
 	else
 		ft_printf(2, "Error\n%s\n", strerror(error));
 	exit(error);
