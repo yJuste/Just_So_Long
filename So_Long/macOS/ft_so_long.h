@@ -56,7 +56,6 @@ typedef struct s_so_long
 {
 	void		*mlx;
 	void		*win;
-	void		*textures[5];
 	t_img		*img;
 	t_map		*map;
 	t_point		*p;
@@ -64,13 +63,8 @@ typedef struct s_so_long
 
 typedef struct s_img
 {
-	void		*ptr;
-	char		*addr;
-	int			bpp;
-	int			size;
-	int			endian;
-	void		*walls;
 	void		*space;
+	void		*walls;
 	void		*stars;
 	void		*ship;
 	void		*astronaut;
@@ -83,7 +77,7 @@ typedef struct s_map
 	int			height;
 }	t_map;
 
-// pour le flood_fill
+// pour flood_fill.
 typedef struct s_point
 {
 	int		x;
@@ -117,7 +111,7 @@ void		ft_check_6(t_so_long *so_long, t_map *map);
 // ft_so_long_next.c
 
 void		ft_so_long(t_so_long *so_long);
-void		ft_print_background(t_so_long *so_long, t_img *img);
+void		ft_print_background(t_so_long *so_long, t_map *map);
 
 // ft_image.c
 
@@ -126,6 +120,10 @@ void		ft_image_walls(t_so_long *so_long);
 void		ft_image_stars(t_so_long *so_long);
 void		ft_image_ship(t_so_long *so_long);
 void		ft_image_astronaut(t_so_long *so_long);
+
+// ft_macros.c
+
+int			ft_key_hook(int keycode, t_so_long *so_long);
 
 // ft_lib.c
 

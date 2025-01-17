@@ -29,12 +29,14 @@ int	main(int argc, char **argv)
 		ft_parse_map(so_long, argv);
 		so_long->mlx = mlx_init();
 		so_long->win = mlx_new_window(so_long->mlx,
-				WIDTH, HEIGHT, "Just'So_Long");
+				so_long->map->width * SPT,
+				so_long->map->height * SPT,
+				"Just'So_Long");
 		ft_so_long(so_long);
-		/*mlx_hook(fdf->win, 2, 0, ft_key_hook, fdf);
-		mlx_hook(fdf->win, 17, 0, ft_close_window, fdf);
-		mlx_loop_hook(fdf->mlx, ft_loop_hook, fdf);
-		mlx_loop(fdf->mlx);*/
+		mlx_hook(so_long->win, 2, 0, ft_key_hook, so_long);
+		mlx_hook(so_long->win, 17, 0, ft_close_window, so_long);
+		//mlx_loop_hook(fdf->mlx, ft_loop_hook, fdf);
+		mlx_loop(so_long->mlx);
 	}
 	else
 		return (ft_error(so_long, 255), 0);

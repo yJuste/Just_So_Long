@@ -12,9 +12,11 @@ PRINTF = libftprintf.a
 PATH_PRINTF = Printf_fd
 
 SRC =	ft_so_long.c				\
-	ft_so_long_next.c			\
 	ft_parse_map.c				\
 	ft_check.c				\
+	ft_so_long_next.c			\
+	ft_image.c				\
+	ft_macros.c				\
 	ft_lib.c				\
 	ft_lib_2.c				\
 	ft_split.c				\

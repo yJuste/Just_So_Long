@@ -14,9 +14,9 @@
 #ifndef FT_MACROS_H
 # define FT_MACROS_H
 
-// Taille de la map de jeu.
-# define WIDTH			800
-# define HEIGHT			700
+// 1. Taille créée dynamiquement la map de jeu.
+// 2. Taille normalisée des sprites, 64x64 pour ma part.
+# define SPT			64
 
 //	---------- Macros for buttons ----------
 
