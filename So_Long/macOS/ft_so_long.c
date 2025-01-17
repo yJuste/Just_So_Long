@@ -12,6 +12,7 @@
 #include "ft_so_long.h"
 
 // ---------------------PROTOTYPE-----------------------
+int			ft_close_window(t_so_long *so_long);
 void		ft_error(t_so_long *so_long, int error);
 void		ft_init(t_so_long **so_long);
 void		ft_free_so_long(t_so_long *so_long);
@@ -26,11 +27,27 @@ int	main(int argc, char **argv)
 	{
 		ft_init(&so_long);
 		ft_parse_map(so_long, argv);
-		ft_free_so_long(so_long);
+		so_long->mlx = mlx_init();
+		so_long->win = mlx_new_window(so_long->mlx,
+				WIDTH, HEIGHT, "Just'So_Long");
+		ft_so_long(so_long);
+		/*mlx_hook(fdf->win, 2, 0, ft_key_hook, fdf);
+		mlx_hook(fdf->win, 17, 0, ft_close_window, fdf);
+		mlx_loop_hook(fdf->mlx, ft_loop_hook, fdf);
+		mlx_loop(fdf->mlx);*/
 	}
 	else
 		return (ft_error(so_long, 255), 0);
 	return (0);
+}
+
+// Ferme la fenêtre.
+int	ft_close_window(t_so_long *so_long)
+{
+	if (so_long)
+		ft_free_so_long(so_long);
+	ft_printf(1, "Window closed\n");
+	return (exit(0), 0);
 }
 
 // Fonction d'erreur.
@@ -71,19 +88,4 @@ void	ft_init(t_so_long **so_long)
 	(*so_long)->img = ft_calloc(1, sizeof(t_img));
 	(*so_long)->map = ft_calloc(1, sizeof(t_map));
 	(*so_long)->p = ft_calloc(1, sizeof(t_map));
-}
-
-// Fonction qui free.
-void	ft_free_so_long(t_so_long *so_long)
-{
-	if (so_long->map->map)
-		ft_free_strs(so_long->map, (void *)so_long->map->map, 'c');
-	if (so_long->img->ptr)
-		mlx_destroy_image(so_long->mlx, so_long->img->ptr);
-	if (so_long->win)
-		mlx_destroy_window(so_long->mlx, so_long->win);
-	free(so_long->img);
-	free(so_long->map);
-	free(so_long->p);
-	free(so_long);
 }

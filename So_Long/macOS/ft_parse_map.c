@@ -86,3 +86,18 @@ void	ft_check(t_so_long *so_long, t_map *map)
 	ft_check_5(so_long, map);
 	ft_check_6(so_long, map);
 }
+
+// Fonction qui free.
+void	ft_free_so_long(t_so_long *so_long)
+{
+	if (so_long->map->map)
+		ft_free_strs(so_long->map, (void *)so_long->map->map, 'c');
+	if (so_long->img->ptr)
+		mlx_destroy_image(so_long->mlx, so_long->img->ptr);
+	if (so_long->win)
+		mlx_destroy_window(so_long->mlx, so_long->win);
+	free(so_long->img);
+	free(so_long->map);
+	free(so_long->p);
+	free(so_long);
+}

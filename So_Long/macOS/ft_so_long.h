@@ -65,6 +65,15 @@ typedef struct s_so_long
 typedef struct s_img
 {
 	void		*ptr;
+	char		*addr;
+	int			bpp;
+	int			size;
+	int			endian;
+	void		*walls;
+	void		*space;
+	void		*stars;
+	void		*ship;
+	void		*astronaut;
 }	t_img;
 
 typedef struct s_map
@@ -85,6 +94,7 @@ typedef struct s_point
 
 // ft_so_long.c
 
+int			ft_close_window(t_so_long *so_long);
 void		ft_error(t_so_long *so_long, int error);
 void		ft_init(t_so_long **so_long);
 void		ft_free_so_long(t_so_long *so_long);
@@ -103,6 +113,19 @@ void		ft_check_3(t_so_long *so_long, int exit, int perso, int collec);
 void		ft_check_4(t_so_long *so_long, t_map *map);
 void		ft_check_5(t_so_long *so_long, t_map *map);
 void		ft_check_6(t_so_long *so_long, t_map *map);
+
+// ft_so_long_next.c
+
+void		ft_so_long(t_so_long *so_long);
+void		ft_print_background(t_so_long *so_long, t_img *img);
+
+// ft_image.c
+
+void		ft_image_space(t_so_long *so_long);
+void		ft_image_walls(t_so_long *so_long);
+void		ft_image_stars(t_so_long *so_long);
+void		ft_image_ship(t_so_long *so_long);
+void		ft_image_astronaut(t_so_long *so_long);
 
 // ft_lib.c
 
