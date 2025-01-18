@@ -1,7 +1,7 @@
 NAME = so_long
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 MINILIBX = libmlx.a
 PATH_MINILIBX = minilibx_macos

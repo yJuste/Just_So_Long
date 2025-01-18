@@ -72,8 +72,9 @@ void	ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y)
 	int		j;
 
 	i = 0;
-	mlx_put_image_to_window(so_long->mlx, so_long->win,
-		so_long->img->space, x * SPT, y * SPT);
+	if (x >= 0 && y >= 0)
+		mlx_put_image_to_window(so_long->mlx, so_long->win,
+			so_long->img->space, x * SPT, y * SPT);
 	while (i < map->height)
 	{
 		j = 0;
