@@ -152,14 +152,6 @@ char		**ft_strsdup(const char **src);
 int			ft_is_separator(int c, const char *sep);
 int			ft_strcmp(const char *s1, const char *s2);
 
-// ft_split.c
-
-char		**ft_split(const char *s);
-size_t		ft_count_words(const char *s);
-char		**ft_split_next(char **out, const char *s);
-char		**ft_split_error(char **out, size_t k);
-char		*ft_strncpy(char *dest, const char *src, size_t n);
-
 // get_next_line.c
 
 char		*get_next_line(int fd);

@@ -23,7 +23,7 @@ int			ft_strcmp(const char *s1, const char *s2);
 // ---------------------------------------------------------------
 
 // Fonction qui remplit une zone en fonction de caractères donnés.
-// size est la taille de x,y (comme un `strlen`);
+// size est la taille de la map en x,y (comme un `strlen`);
 // begin est l'`index` du début de propagation;
 void	flood_fill(char **tab, t_point size, t_point cur, const char *to_fill)
 {

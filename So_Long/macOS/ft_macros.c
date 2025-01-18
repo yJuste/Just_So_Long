@@ -33,6 +33,7 @@ int	ft_key_hook(int keycode, t_so_long *so_long)
 	return (0);
 }
 
+// Fonction qui gère la touche directionnelle gauche.
 void	ft_key_movements(int keycode, t_so_long *so_long, t_point *p)
 {
 	so_long->map->px = p->x;
@@ -45,6 +46,7 @@ void	ft_key_movements(int keycode, t_so_long *so_long, t_point *p)
 	ft_key_movements_right(keycode, so_long, p);
 }
 
+// Fonction qui gère la touche directionnelle droite.
 void	ft_key_movements_right(int keycode, t_so_long *so_long, t_point *p)
 {
 	if (keycode == ARROW_RIGHT || keycode == KEY_D)
@@ -56,6 +58,7 @@ void	ft_key_movements_right(int keycode, t_so_long *so_long, t_point *p)
 	ft_key_movements_down(keycode, so_long, p);
 }
 
+// Fonction qui gère la touche directionnelle basse.
 void	ft_key_movements_down(int keycode, t_so_long *so_long, t_point *p)
 {
 	so_long->map->py = p->y;
@@ -68,6 +71,7 @@ void	ft_key_movements_down(int keycode, t_so_long *so_long, t_point *p)
 	ft_key_movements_up(keycode, so_long, p);
 }
 
+// Fonction qui gère la touche directionnelle haute.
 void	ft_key_movements_up(int keycode, t_so_long *so_long, t_point *p)
 {
 	if (keycode == ARROW_UP || keycode == KEY_W)

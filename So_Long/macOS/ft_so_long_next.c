@@ -19,6 +19,9 @@ void		ft_inspect_movements(t_so_long *so_long, t_map *map,
 				t_point cur, t_point next);
 // -----------------------------------------------------
 
+// Fonction d'initialisation du jeu.
+// 1. Alloue de la mémoire pour les images.
+// 2. Affiche les éléments.
 void	ft_so_long(t_so_long *so_long)
 {
 	ft_image_space(so_long);
@@ -30,6 +33,7 @@ void	ft_so_long(t_so_long *so_long)
 	ft_print_astronaut(so_long, so_long->map, -1, -1);
 }
 
+// Affiche le background: mur, collectible, sortie, vide.
 void	ft_print_background(t_so_long *so_long, t_map *map)
 {
 	size_t		i;
@@ -59,6 +63,7 @@ void	ft_print_background(t_so_long *so_long, t_map *map)
 	}
 }
 
+// Affiche l'astronaute.
 void	ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y)
 {
 	size_t		i;
@@ -81,6 +86,7 @@ void	ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y)
 	}
 }
 
+// Check les mouvements de l'astronaute quand il bouge.
 void	ft_inspect_movements(t_so_long *so_long, t_map *map,
 		t_point cur, t_point next)
 {
@@ -107,5 +113,4 @@ void	ft_inspect_movements(t_so_long *so_long, t_map *map,
 	}
 	ft_swap_extra(&so_long->map->map[cur.y][cur.x],
 		&so_long->map->map[next.y][next.x]);
-	return ;
 }
