@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 #include "ft_so_long.h"
 
-// ---------------------------------PROTOTYPE-----------------------------------
+// -----------------------------PROTOTYPE---------------------------
 void		ft_check_2(t_so_long *so_long, t_map *map);
-void		ft_check_3(t_so_long *so_long, int exit, int perso, int collec);
+void		ft_check_3(t_so_long *so_long, int exit, int perso);
 void		ft_check_4(t_so_long *so_long, t_map *map);
 void		ft_check_5(t_so_long *so_long, t_map *map);
 void		ft_check_6(t_so_long *so_long, t_map *map);
-// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------
 
 // Fonction qui gère les lignes et les caractères invalides.
 void	ft_check_2(t_so_long *so_long, t_map *map)
@@ -50,7 +50,7 @@ void	ft_check_2(t_so_long *so_long, t_map *map)
 }
 
 // Fonction qui gère le nombre de caractères minimum.
-void	ft_check_3(t_so_long *so_long, int exit, int perso, int collec)
+void	ft_check_3(t_so_long *so_long, int exit, int perso)
 {
 	int			i;
 	int			j;
@@ -70,12 +70,12 @@ void	ft_check_3(t_so_long *so_long, int exit, int perso, int collec)
 				perso++;
 			}
 			else if (so_long->map->map[i][j] == 'C')
-				collec++;
+				so_long->map->max_stars++;
 			j++;
 		}
 		i++;
 	}
-	if (exit != 1 || perso != 1 || collec < 1)
+	if (exit != 1 || perso != 1 || so_long->map->max_stars < 1)
 		return (ft_error(so_long, 248));
 }
 

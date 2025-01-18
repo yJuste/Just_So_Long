@@ -75,6 +75,9 @@ typedef struct s_map
 	char		**map;
 	int			width;
 	int			height;
+	int			px;
+	int			py;
+	int			max_stars;
 }	t_map;
 
 // pour flood_fill.
@@ -103,7 +106,7 @@ void		ft_check(t_so_long *so_long, t_map *map);
 // ft_check.c
 
 void		ft_check_2(t_so_long *so_long, t_map *map);
-void		ft_check_3(t_so_long *so_long, int exit, int perso, int collec);
+void		ft_check_3(t_so_long *so_long, int exit, int perso);
 void		ft_check_4(t_so_long *so_long, t_map *map);
 void		ft_check_5(t_so_long *so_long, t_map *map);
 void		ft_check_6(t_so_long *so_long, t_map *map);
@@ -113,7 +116,8 @@ void		ft_check_6(t_so_long *so_long, t_map *map);
 void		ft_so_long(t_so_long *so_long);
 void		ft_print_background(t_so_long *so_long, t_map *map);
 void		ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y);
-int			ft_inspect_movements(t_so_long *so_long, t_map *map, t_point p);
+void		ft_inspect_movements(t_so_long *so_long, t_map *map,
+				t_point cur, t_point next);
 
 // ft_image.c
 
@@ -126,10 +130,10 @@ void		ft_image_astronaut(t_so_long *so_long);
 // ft_macros.c
 
 int			ft_key_hook(int keycode, t_so_long *so_long);
-void		ft_key_movements(int keycode, t_so_long *so_long,
-				t_map *map, t_point *p);
-void		ft_key_movements_next(int keycode, t_so_long *so_long,
-				t_map *map, t_point *p);
+void		ft_key_movements(int keycode, t_so_long *so_long, t_point *p);
+void		ft_key_movements_right(int keycode, t_so_long *so_long, t_point *p);
+void		ft_key_movements_down(int keycode, t_so_long *so_long, t_point *p);
+void		ft_key_movements_up(int keycode, t_so_long *so_long, t_point *p);
 
 // ft_lib.c
 

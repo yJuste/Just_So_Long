@@ -81,7 +81,7 @@ int	ft_parse_map_next(t_so_long *so_long, t_map *map, int fd, char *line)
 void	ft_check(t_so_long *so_long, t_map *map)
 {
 	ft_check_2(so_long, map);
-	ft_check_3(so_long, 0, 0, 0);
+	ft_check_3(so_long, 0, 0);
 	ft_check_4(so_long, map);
 	ft_check_5(so_long, map);
 	ft_check_6(so_long, map);

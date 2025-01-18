@@ -15,7 +15,8 @@
 void		ft_so_long(t_so_long *so_long);
 void		ft_print_background(t_so_long *so_long, t_map *map);
 void		ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y);
-int			ft_inspect_movements(t_so_long *so_long, t_map *map, t_point p);
+void		ft_inspect_movements(t_so_long *so_long, t_map *map,
+				t_point cur, t_point next);
 // -----------------------------------------------------
 
 void	ft_so_long(t_so_long *so_long)
@@ -26,6 +27,7 @@ void	ft_so_long(t_so_long *so_long)
 	ft_image_ship(so_long);
 	ft_image_astronaut(so_long);
 	ft_print_background(so_long, so_long->map);
+	ft_print_astronaut(so_long, so_long->map, -1, -1);
 }
 
 void	ft_print_background(t_so_long *so_long, t_map *map)
@@ -63,6 +65,8 @@ void	ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y)
 	size_t		j;
 
 	i = 0;
+	mlx_put_image_to_window(so_long->mlx, so_long->win,
+		so_long->img->space, x * SPT, y * SPT);
 	while (i < map->height)
 	{
 		j = 0;
@@ -71,21 +75,37 @@ void	ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y)
 			if (map->map[i][j] == 'P')
 				mlx_put_image_to_window(so_long->mlx, so_long->win,
 					so_long->img->astronaut, j * SPT, i * SPT);
-			else if (map->map[i][j] == '0')
-				mlx_put_image_to_window(so_long->mlx, so_long->win,
-					so_long->img->space, j * SPT, i * SPT);
 			j++;
 		}
 		i++;
 	}
 }
 
-int	ft_inspect_movements(t_so_long *so_long, t_map *map, t_point p)
+void	ft_inspect_movements(t_so_long *so_long, t_map *map,
+		t_point cur, t_point next)
 {
-	if (p.y < 0 || p.y >= map->height
-		|| p.x < 0 || p.x >= map->width)
-		return (1);
-	if (map->map[p.y][p.x] == '1')
-		return (1);
-	return (0);
+	if (next.y < 0 || next.y >= map->height
+		|| next.x < 0 || next.x >= map->width)
+		return ;
+	else if (map->map[next.y][next.x] == '1')
+		return ;
+	else if (map->map[next.y][next.x] == 'E')
+	{
+		if (map->max_stars != 0)
+			return ;
+		else
+			return (ft_free_so_long(so_long),
+				write(1, "You won, congratulations!\n", 26),
+				exit(0));
+	}
+	so_long->p->x = next.x;
+	so_long->p->y = next.y;
+	if (map->map[next.y][next.x] == 'C')
+	{
+		map->map[next.y][next.x] = '0';
+		map->max_stars -= 1;
+	}
+	ft_swap_extra(&so_long->map->map[cur.y][cur.x],
+		&so_long->map->map[next.y][next.x]);
+	return ;
 }
