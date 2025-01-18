@@ -112,6 +112,7 @@ void		ft_check_6(t_so_long *so_long, t_map *map);
 
 void		ft_so_long(t_so_long *so_long);
 void		ft_print_background(t_so_long *so_long, t_map *map);
+void		ft_print_walls(t_so_long *so_long, t_map *map);
 
 // ft_image.c
 
