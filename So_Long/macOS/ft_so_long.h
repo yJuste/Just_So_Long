@@ -140,17 +140,17 @@ void		ft_key_movements_up(int keycode, t_so_long *so_long, t_point *p);
 void		*ft_calloc(size_t count, size_t size);
 void		*ft_realloc(void *ptr, size_t old, size_t size);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
+char		*ft_strncpy(char *dest, const char *src, size_t n);
 char		*ft_strchr(const char *s, int c, char flg);
-int			ft_strcmp(const char *s1, const char *s2);
 
 // ft_lib_2.c
 
-void		flood_fill(char **tab, t_point size, t_point begin,
+void		flood_fill(char **tab, t_point size, t_point cur,
 				const char *to_fill);
-void		fill(char **tab, t_point size, t_point cur, const char *to_fill);
 void		ft_free_strs(t_map *map, void **strs, char flg);
 char		**ft_strsdup(const char **src);
 int			ft_is_separator(int c, const char *sep);
+int			ft_strcmp(const char *s1, const char *s2);
 
 // ft_split.c
 

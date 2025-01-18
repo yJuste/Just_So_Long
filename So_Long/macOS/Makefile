@@ -19,7 +19,6 @@ SRC =	ft_so_long.c				\
 	ft_macros.c				\
 	ft_lib.c				\
 	ft_lib_2.c				\
-	ft_split.c				\
 	Get_Next_Line/get_next_line.c
 
 OBJ = $(SRC:.c=.o)

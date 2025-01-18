@@ -22,8 +22,11 @@ void		ft_key_movements_up(int keycode, t_so_long *so_long, t_point *p);
 // Fonction principale qui appelle les différentes touches pressées.
 int	ft_key_hook(int keycode, t_so_long *so_long)
 {
-	if (keycode == ARROW_LEFT || keycode == ARROW_RIGHT
-		|| keycode == ARROW_UP || keycode == ARROW_DOWN)
+	ft_printf(1, "%d\n", keycode);
+	if (keycode == ARROW_LEFT || keycode == KEY_A
+		|| keycode == ARROW_RIGHT || keycode == KEY_D
+		|| keycode == ARROW_DOWN || keycode == KEY_S
+		|| keycode == ARROW_UP || keycode == KEY_W)
 		ft_key_movements(keycode, so_long, so_long->p);
 	else if (keycode == MAIN_PAD_ESC)
 		ft_close_window(so_long);
@@ -33,7 +36,7 @@ int	ft_key_hook(int keycode, t_so_long *so_long)
 void	ft_key_movements(int keycode, t_so_long *so_long, t_point *p)
 {
 	so_long->map->px = p->x;
-	if (keycode == ARROW_LEFT)
+	if (keycode == ARROW_LEFT || keycode == KEY_A)
 	{
 		ft_inspect_movements(so_long, so_long->map,
 			(t_point){p->x, p->y},
@@ -44,7 +47,7 @@ void	ft_key_movements(int keycode, t_so_long *so_long, t_point *p)
 
 void	ft_key_movements_right(int keycode, t_so_long *so_long, t_point *p)
 {
-	if (keycode == ARROW_RIGHT)
+	if (keycode == ARROW_RIGHT || keycode == KEY_D)
 	{
 		ft_inspect_movements(so_long, so_long->map,
 			(t_point){p->x, p->y},
@@ -56,7 +59,7 @@ void	ft_key_movements_right(int keycode, t_so_long *so_long, t_point *p)
 void	ft_key_movements_down(int keycode, t_so_long *so_long, t_point *p)
 {
 	so_long->map->py = p->y;
-	if (keycode == ARROW_DOWN)
+	if (keycode == ARROW_DOWN || keycode == KEY_S)
 	{
 		ft_inspect_movements(so_long, so_long->map,
 			(t_point){p->x, p->y},
@@ -67,7 +70,7 @@ void	ft_key_movements_down(int keycode, t_so_long *so_long, t_point *p)
 
 void	ft_key_movements_up(int keycode, t_so_long *so_long, t_point *p)
 {
-	if (keycode == ARROW_UP)
+	if (keycode == ARROW_UP || keycode == KEY_W)
 	{
 		ft_inspect_movements(so_long, so_long->map,
 			(t_point){p->x, p->y},

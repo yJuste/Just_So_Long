@@ -13,34 +13,29 @@
 /* ************************************************************************** */
 #include "ft_so_long.h"
 
-// ----------------------------------PROTOTYPE----------------------------------
-void		flood_fill(char **tab, t_point size, t_point begin,
+// ----------------------------PROTOTYPE--------------------------
+void		flood_fill(char **tab, t_point size, t_point cur,
 				const char *to_fill);
-void		fill(char **tab, t_point size, t_point cur, const char *to_fill);
 void		ft_free_strs(t_map *map, void **strs, char flg);
 char		**ft_strsdup(const char **src);
 int			ft_is_separator(int c, const char *sep);
-// -----------------------------------------------------------------------------
+int			ft_strcmp(const char *s1, const char *s2);
+// ---------------------------------------------------------------
 
 // Fonction qui remplit une zone en fonction de caractères donnés.
 // size est la taille de x,y (comme un `strlen`);
 // begin est l'`index` du début de propagation;
-void	flood_fill(char **tab, t_point size, t_point begin, const char *to_fill)
-{
-	fill(tab, size, begin, to_fill);
-}
-
-void	fill(char **tab, t_point size, t_point cur, const char *to_fill)
+void	flood_fill(char **tab, t_point size, t_point cur, const char *to_fill)
 {
 	if (cur.y < 0 || cur.y >= size.y
 		|| cur.x < 0 || cur.x >= size.x
 		|| !ft_is_separator(tab[cur.y][cur.x], to_fill))
 		return ;
 	tab[cur.y][cur.x] = 'F';
-	fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
-	fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
-	fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
-	fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
+	flood_fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
+	flood_fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
+	flood_fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
+	flood_fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
 }
 
 void	ft_free_strs(t_map *map, void **strs, char flg)
@@ -110,4 +105,14 @@ int	ft_is_separator(int c, const char *sep)
 		sep++;
 	}
 	return (0);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t		i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] && s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

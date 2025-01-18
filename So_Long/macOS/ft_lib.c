@@ -17,8 +17,8 @@
 void		*ft_calloc(size_t count, size_t size);
 void		*ft_realloc(void *ptr, size_t old, size_t size);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
+char		*ft_strncpy(char *dest, const char *src, size_t n);
 char		*ft_strchr(const char *s, int c, char flg);
-int			ft_strcmp(const char *s1, const char *s2);
 // ---------------------------------------------------------------
 
 void	*ft_calloc(size_t count, size_t size)
@@ -74,6 +74,25 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
+char	*ft_strncpy(char *dest, const char *src, size_t n)
+{
+	size_t		i;
+
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
 char	*ft_strchr(const char *s, int c, char flg)
 {
 	size_t		i;
@@ -99,14 +118,4 @@ char	*ft_strchr(const char *s, int c, char flg)
 			return ((char *)(s + i));
 	}
 	return (NULL);
-}
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t		i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] && s2[i])
-		i++;
-	return (s1[i] - s2[i]);
 }
