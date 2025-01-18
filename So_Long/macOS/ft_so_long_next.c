@@ -9,15 +9,17 @@
 /*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*   • Affiche les éléments visuels.                                          */
+/* ************************************************************************** */
 #include "ft_so_long.h"
 
-// ---------------------PROTOTYPE-----------------------
+// ----------------------------------PROTOTYPE----------------------------------
 void		ft_so_long(t_so_long *so_long);
 void		ft_print_background(t_so_long *so_long, t_map *map);
 void		ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y);
 void		ft_inspect_movements(t_so_long *so_long, t_map *map,
 				t_point cur, t_point next);
-// -----------------------------------------------------
+// -----------------------------------------------------------------------------
 
 // Fonction d'initialisation du jeu.
 // 1. Alloue de la mémoire pour les images.
