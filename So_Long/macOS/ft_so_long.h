@@ -112,7 +112,8 @@ void		ft_check_6(t_so_long *so_long, t_map *map);
 
 void		ft_so_long(t_so_long *so_long);
 void		ft_print_background(t_so_long *so_long, t_map *map);
-void		ft_print_walls(t_so_long *so_long, t_map *map);
+void		ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y);
+int			ft_inspect_movements(t_so_long *so_long, t_map *map, t_point p);
 
 // ft_image.c
 
@@ -125,6 +126,10 @@ void		ft_image_astronaut(t_so_long *so_long);
 // ft_macros.c
 
 int			ft_key_hook(int keycode, t_so_long *so_long);
+void		ft_key_movements(int keycode, t_so_long *so_long,
+				t_map *map, t_point *p);
+void		ft_key_movements_next(int keycode, t_so_long *so_long,
+				t_map *map, t_point *p);
 
 // ft_lib.c
 
