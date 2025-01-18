@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 		ft_so_long(so_long);
 		mlx_hook(so_long->win, 2, 0, ft_key_hook, so_long);
 		mlx_hook(so_long->win, 17, 0, ft_close_window, so_long);
-		//mlx_loop_hook(fdf->mlx, ft_loop_hook, fdf);
 		mlx_loop(so_long->mlx);
 	}
 	else

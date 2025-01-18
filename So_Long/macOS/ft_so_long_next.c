@@ -28,16 +28,16 @@ void	ft_so_long(t_so_long *so_long)
 
 void	ft_print_background(t_so_long *so_long, t_map *map)
 {
-	size_t		i;
-	size_t		j;
 	int			x;
 	int			y;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
-	while (map->map[i])
+	while (i < map->height)
 	{
 		j = 0;
-		while (map->map[i][j])
+		while (j < map->width)
 		{
 			x = j * SPT;
 			y = i * SPT;
@@ -47,4 +47,10 @@ void	ft_print_background(t_so_long *so_long, t_map *map)
 		}
 		i++;
 	}
+}
+
+void	ft_print_collectible(t_so_long *so_long, t_map *map)
+{
+
+	return ;
 }
