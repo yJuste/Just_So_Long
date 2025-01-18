@@ -36,8 +36,8 @@ void	ft_so_long(t_so_long *so_long)
 // Affiche le background: mur, collectible, sortie, vide.
 void	ft_print_background(t_so_long *so_long, t_map *map)
 {
-	size_t		i;
-	size_t		j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < map->height)
@@ -66,8 +66,8 @@ void	ft_print_background(t_so_long *so_long, t_map *map)
 // Affiche l'astronaute.
 void	ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y)
 {
-	size_t		i;
-	size_t		j;
+	int		i;
+	int		j;
 
 	i = 0;
 	mlx_put_image_to_window(so_long->mlx, so_long->win,

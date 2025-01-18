@@ -82,7 +82,7 @@ void	ft_check_3(t_so_long *so_long, int exit, int perso)
 // Fonction qui gère que la map soit encadré par des murs.
 void	ft_check_4(t_so_long *so_long, t_map *map)
 {
-	size_t		j;
+	int		j;
 
 	j = 0;
 	while (j < map->width)

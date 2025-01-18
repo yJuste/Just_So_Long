@@ -1,7 +1,7 @@
 NAME = so_long
 
 CC = cc
-CFLAGS = -g # -fsanitize=address
+CFLAGS = -g -Wall -Wextra -Werror
 
 MINILIBX = libmlx.a
 PATH_MINILIBX = minilibx_macos

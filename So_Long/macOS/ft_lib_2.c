@@ -40,7 +40,7 @@ void	flood_fill(char **tab, t_point size, t_point cur, const char *to_fill)
 
 void	ft_free_strs(t_map *map, void **strs, char flg)
 {
-	size_t		i;
+	int		i;
 
 	i = 0;
 	if (!strs)

@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 #include "ft_so_long.h"
 
-// ---------------------PROTOTYPE-----------------------
+// -----------------------PROTOTYPE-------------------------
 int			ft_close_window(t_so_long *so_long);
 void		ft_error(t_so_long *so_long, int error);
 void		ft_init(t_so_long **so_long);
 void		ft_free_so_long(t_so_long *so_long);
-// -----------------------------------------------------
+// ---------------------------------------------------------
 
 int	main(int argc, char **argv)
 {

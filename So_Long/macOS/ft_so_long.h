@@ -99,8 +99,7 @@ void		ft_free_so_long(t_so_long *so_long);
 // ft_parse_map.c
 
 void		ft_parse_map(t_so_long *so_long, char **argv);
-int			ft_parse_map_next(t_so_long *so_long, t_map *map,
-				int fd, char *line);
+int			ft_parse_map_next(t_map *map, int fd, char *line);
 void		ft_check(t_so_long *so_long, t_map *map);
 
 // ft_check.c
@@ -130,7 +129,7 @@ void		ft_image_astronaut(t_so_long *so_long);
 // ft_macros.c
 
 int			ft_key_hook(int keycode, t_so_long *so_long);
-void		ft_key_movements(int keycode, t_so_long *so_long, t_point *p);
+void		ft_key_movements_left(int keycode, t_so_long *so_long, t_point *p);
 void		ft_key_movements_right(int keycode, t_so_long *so_long, t_point *p);
 void		ft_key_movements_down(int keycode, t_so_long *so_long, t_point *p);
 void		ft_key_movements_up(int keycode, t_so_long *so_long, t_point *p);
