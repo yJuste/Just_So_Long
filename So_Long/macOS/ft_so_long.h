@@ -152,8 +152,8 @@ char		*ft_strchr(const char *s, int c, char flg);
 
 void		flood_fill(char **tab, t_point size, t_point cur,
 				const char *to_fill);
+void		fill(char **tab, t_point size, t_point cur, const char *to_fill);
 void		ft_free_strs(t_map *map, void **strs, char flg);
-char		**ft_strsdup(const char **src);
 int			ft_is_separator(int c, const char *sep);
 int			ft_strcmp(const char *s1, const char *s2);
 
@@ -161,6 +161,7 @@ int			ft_strcmp(const char *s1, const char *s2);
 
 char		*ft_itoa(int n);
 void		ft_itoa_next(int n, char *res, int len);
+char		**ft_strsdup(const char **src);
 void		ft_putnbr(int nbr);
 
 // get_next_line.c

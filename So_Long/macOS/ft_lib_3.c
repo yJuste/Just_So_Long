@@ -16,6 +16,7 @@
 // ----------------------PROTOTYPE----------------------
 char		*ft_itoa(int n);
 void		ft_itoa_next(int n, char *res, int len);
+char		**ft_strsdup(const char **src);
 void		ft_putnbr(int nbr);
 // -----------------------------------------------------
 
@@ -62,6 +63,35 @@ void	ft_itoa_next(int n, char *res, int len)
 		n /= 10;
 	}
 	return ;
+}
+
+char	**ft_strsdup(const char **src)
+{
+	size_t		i;
+	size_t		j;
+	char		**dest;
+
+	j = 0;
+	while (src[j])
+		j++;
+	dest = ft_calloc(j + 1, sizeof(char *));
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (i < j)
+	{
+		dest[i] = ft_strdup(src[i]);
+		if (!dest[i])
+		{
+			j = 0;
+			while (j < i)
+				free(dest[j++]);
+			return (free(dest), NULL);
+		}
+		i++;
+	}
+	dest[j] = NULL;
+	return (dest);
 }
 
 void	ft_putnbr(int nbr)
