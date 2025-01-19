@@ -129,9 +129,7 @@ void	ft_print_step(t_so_long *so_long)
 
 	so_long->map->counter += 1;
 	counter = ft_itoa(so_long->map->counter);
-	mlx_put_image_to_window(so_long->mlx, so_long->win,
-		so_long->img->walls, 0, 0);
-	i = 1;
+	i = 0;
 	while (i < 5)
 		mlx_put_image_to_window(so_long->mlx, so_long->win,
 			so_long->img->walls, (i++) * SPT, 0);
@@ -140,5 +138,4 @@ void	ft_print_step(t_so_long *so_long)
 	mlx_string_put(so_long->mlx, so_long->win,
 		200, 20, 0xFFFFFF, counter);
 	free(counter);
-	return ;
 }
