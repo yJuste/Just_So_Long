@@ -82,6 +82,7 @@ typedef struct s_map
 	int			px;
 	int			py;
 	int			max_stars;
+	int			counter;
 }	t_map;
 
 // pour flood_fill.
@@ -121,6 +122,7 @@ void		ft_print_background(t_so_long *so_long, t_map *map);
 void		ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y);
 void		ft_inspect_movements(t_so_long *so_long, t_map *map,
 				t_point cur, t_point next);
+void		ft_print_step(t_so_long *so_long);
 
 // ft_image.c
 
@@ -154,6 +156,12 @@ void		ft_free_strs(t_map *map, void **strs, char flg);
 char		**ft_strsdup(const char **src);
 int			ft_is_separator(int c, const char *sep);
 int			ft_strcmp(const char *s1, const char *s2);
+
+// ft_lib_3.c
+
+char		*ft_itoa(int n);
+void		ft_itoa_next(int n, char *res, int len);
+void		ft_putnbr(int nbr);
 
 // get_next_line.c
 

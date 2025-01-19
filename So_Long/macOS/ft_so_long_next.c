@@ -19,6 +19,7 @@ void		ft_print_background(t_so_long *so_long, t_map *map);
 void		ft_print_astronaut(t_so_long *so_long, t_map *map, int x, int y);
 void		ft_inspect_movements(t_so_long *so_long, t_map *map,
 				t_point cur, t_point next);
+void		ft_print_step(t_so_long *so_long);
 // -----------------------------------------------------------------------------
 
 // Fonction d'initialisation du jeu.
@@ -33,6 +34,7 @@ void	ft_so_long(t_so_long *so_long)
 	ft_image_astronaut(so_long);
 	ft_print_background(so_long, so_long->map);
 	ft_print_astronaut(so_long, so_long->map, -1, -1);
+	ft_print_step(so_long);
 }
 
 // Affiche le background: mur, collectible, sortie, vide.
@@ -103,9 +105,10 @@ void	ft_inspect_movements(t_so_long *so_long, t_map *map,
 		if (map->max_stars != 0)
 			return ;
 		else
-			return (ft_free_so_long(so_long),
-				write(1, "You won, congratulations!\n", 26),
-				exit(0));
+			return (write(1, "You won, congratulations!\n", 26),
+				write(1, "You made it with: ", 18),
+				ft_putnbr(so_long->map->counter), write(1, ".\n", 2),
+				ft_free_so_long(so_long), exit(0));
 	}
 	so_long->p->x = next.x;
 	so_long->p->y = next.y;
@@ -116,4 +119,26 @@ void	ft_inspect_movements(t_so_long *so_long, t_map *map,
 	}
 	ft_swap_extra(&so_long->map->map[cur.y][cur.x],
 		&so_long->map->map[next.y][next.x]);
+	ft_print_step(so_long);
+}
+
+void	ft_print_step(t_so_long *so_long)
+{
+	int			i;
+	char		*counter;
+
+	so_long->map->counter += 1;
+	counter = ft_itoa(so_long->map->counter);
+	mlx_put_image_to_window(so_long->mlx, so_long->win,
+		so_long->img->walls, 0, 0);
+	i = 1;
+	while (i < 5)
+		mlx_put_image_to_window(so_long->mlx, so_long->win,
+			so_long->img->walls, (i++) * SPT, 0);
+	mlx_string_put(so_long->mlx, so_long->win,
+		15, 20, 0xFFFFFF, "Nombre de brasse:");
+	mlx_string_put(so_long->mlx, so_long->win,
+		200, 20, 0xFFFFFF, counter);
+	free(counter);
+	return ;
 }
